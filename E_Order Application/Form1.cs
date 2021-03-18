@@ -22,9 +22,29 @@ namespace E_Order_Application
 
         private void getMon(object o, EventArgs e)
         {
+            int index = comboBox1.SelectedIndex;
+            if (index == -1)
+            {
+                MessageBox.Show("Vui lòng chọn bàn!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (tableOrder[index].Rows.Count > 0)
+            {
+                DialogResult d = MessageBox.Show("Bàn này đã có order rồi. Reset order?", "Chú ý", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                switch (d)
+                {
+                    case DialogResult.Yes:
+                        tableOrder[index] = new DataTable();
+                        dataGridView1.Rows.Clear();
+                        break;
+                    case DialogResult.No:
+                        return;
+                }
+            }
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                if (dataGridView1[0, i].Value.ToString() == ((Button)o).Text)
+                if (dataGridView1[0, i].Value == null) break;
+                else if (dataGridView1[0, i].Value.ToString() == ((Button)o).Text)
                 {
                     dataGridView1[1, i].Value = Convert.ToInt32(dataGridView1[1, i].Value) + 1;
                     return;
@@ -50,23 +70,6 @@ namespace E_Order_Application
         private void button2_Click(object sender, EventArgs e)
         {
             int index = comboBox1.SelectedIndex;
-            if (index == -1)
-            {
-                MessageBox.Show("Vui lòng chọn bàn!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (tableOrder[index].Rows.Count > 0)
-            {
-                DialogResult d = MessageBox.Show("Bàn này đã có order rồi. Reset order?", "Chú ý", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                switch(d)
-                {
-                    case DialogResult.Yes:
-                        tableOrder[index] = new DataTable();
-                        break;
-                    case DialogResult.No:
-                        return;
-                }    
-            }
             foreach (DataGridViewColumn c in dataGridView1.Columns)
             {
                 tableOrder[index].Columns.Add(c.HeaderText);
