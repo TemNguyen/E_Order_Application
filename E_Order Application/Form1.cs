@@ -88,6 +88,19 @@ namespace E_Order_Application
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //
+           int index = comboBox1.SelectedIndex;
+           if (dataGridView1.Rows.Count > 1 && tableOrder[index].Rows.Count <= 0)
+            {
+                DialogResult d = MessageBox.Show("Order hiện tại chưa được lưu, nếu chuyển bàn sẽ mất order. Tiếp tục?", "Unsaved Order", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                switch(d)
+                {
+                    case DialogResult.Yes:
+                        break;
+                    case DialogResult.No:
+                        return;
+                }    
+            }
            dataGridView1.Rows.Clear();
            foreach (DataRow row in tableOrder[comboBox1.SelectedIndex].Rows)
            {
@@ -99,8 +112,23 @@ namespace E_Order_Application
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int index = comboBox1.SelectedIndex;
+            if (tableOrder[index].Rows.Count > 0)
+            {
+                DialogResult d = MessageBox.Show("Bàn này đã có order rồi. Reset order?", "Chú ý", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                switch (d)
+                {
+                    case DialogResult.Yes:
+                        tableOrder[index] = new DataTable();
+                        dataGridView1.Rows.Clear();
+                        break;
+                    case DialogResult.No:
+                        return;
+                }
+            }
             dataGridView1.Rows.Clear();
         }
+
     }
 }
        
