@@ -1,0 +1,10 @@
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\bin\Debug\E_Order Application.exe.config
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\bin\Debug\E_Order Application.exe
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\bin\Debug\E_Order Application.pdb
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\obj\Debug\E_Order Application.csprojAssemblyReference.cache
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\obj\Debug\E_Order_Application.Form1.resources
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\obj\Debug\E_Order_Application.Properties.Resources.resources
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\obj\Debug\E_Order Application.csproj.GenerateResource.cache
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\obj\Debug\E_Order Application.csproj.CoreCompileInputs.cache
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\obj\Debug\E_Order Application.exe
+D:\Code\code c#\Vs2019\Winform\E_Order\E_Order Application\E_Order Application\obj\Debug\E_Order Application.pdb
