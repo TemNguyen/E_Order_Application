@@ -70,6 +70,11 @@ namespace E_Order_Application
         private void button2_Click(object sender, EventArgs e)
         {
             int index = comboBox1.SelectedIndex;
+            if (index == -1)
+            {
+                MessageBox.Show("Vui lòng chọn bàn!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (DataGridViewColumn c in dataGridView1.Columns)
             {
                 tableOrder[index].Columns.Add(c.HeaderText);
@@ -83,7 +88,12 @@ namespace E_Order_Application
                 }
                 tableOrder[index].Rows.Add(row);
             }
-            if (tableOrder[index] != null) MessageBox.Show("Order thành công", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (tableOrder[index].Rows.Count > 1) MessageBox.Show("Order thành công", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                MessageBox.Show("Order trống!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tableOrder[index] = new DataTable();
+            }    
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
