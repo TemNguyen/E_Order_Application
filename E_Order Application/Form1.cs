@@ -14,6 +14,7 @@ namespace E_Order_Application
     {
 
         DataTable[] tableOrder;
+        int currentIndex = 0;
         public Form1()
         {
             InitializeComponent();
@@ -98,26 +99,28 @@ namespace E_Order_Application
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //
-           int index = comboBox1.SelectedIndex;
-           if (dataGridView1.Rows.Count > 1 && tableOrder[index].Rows.Count <= 0)
+            int index = comboBox1.SelectedIndex;
+            if (index == currentIndex) return;
+            if (dataGridView1.Rows.Count > 1 && tableOrder[currentIndex].Rows.Count <= 0)
             {
                 DialogResult d = MessageBox.Show("Order hiện tại chưa được lưu, nếu chuyển bàn sẽ mất order. Tiếp tục?", "Unsaved Order", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                switch(d)
+                switch (d)
                 {
                     case DialogResult.Yes:
                         break;
                     case DialogResult.No:
+                        comboBox1.SelectedIndex = currentIndex;
                         return;
-                }    
+                }
             }
-           dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Clear();
            foreach (DataRow row in tableOrder[comboBox1.SelectedIndex].Rows)
            {
                 string[] r = row.ItemArray.OfType<string>().ToArray();
                 dataGridView1.Rows.Add(r);
            }
            dataGridView1.Refresh();
+           currentIndex = comboBox1.SelectedIndex;
         }
 
         private void button1_Click(object sender, EventArgs e)
